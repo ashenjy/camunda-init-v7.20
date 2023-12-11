@@ -1,5 +1,28 @@
-spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+spring.datasource:
+# url: jdbc:h2:file:./camunda-h2-database
+  url: jdbc:h2:./aj-camunda-init-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#shareable h2 database: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+  username: sa
+  password: sa
+spring.h2.console.enabled: true
 
-camunda.bpm.admin-user:
-  id: admin
-  password: admin
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      password: admin
+      # if you are not using history at all, set enforceHistoryTimeToLive property to false (set to true by default)
+    generic-properties:
+      properties:
+        enforceHistoryTimeToLive: false
+        # if you want to set a specific TTL, use historyTimeToLive property
+        # historyTimeToLive: P1D
+        
+server.port: 8080
+
+    # camunda.bpm.job-execution.enabled: false: This property controls whether the Job Executor in Camunda is enabled or not1. The Job Executor is a component in Camunda that asynchronously executes jobs like timer events or sending messages2. By setting this to false, the Job Executor is disabled1.
+    # camunda.bpm.id-generator: simple: This property sets the ID generator to ‘simple’. The ID generator is used by Camunda to generate unique IDs for various elements like process instances, tasks, etc. The ‘simple’ ID generator generates unique IDs that are suitable for most use cases.
+    # job-execution.enabled: false
+    # id-generator: simple
+
+

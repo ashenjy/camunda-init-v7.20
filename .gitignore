@@ -17,4 +17,5 @@ buildNumber.properties
 .classpath
 .vscode
 .DS_Store
-camunda-h2-database.mv.db
+aj-camunda-init-db.mv.db
+aj-camunda-init-db.trace.db
